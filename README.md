@@ -1,8 +1,7 @@
 # Griebel, Lapin et al bioRxiv 2021, doi
 # Title
 
-This repository contains R scripts that allow to draw metaplots of TPR1 in TPR1-GFP Col-0 and TPR1-GFP Col-0 eds1 lines for gene sets of interest
-
+This repository contains R scripts that allow to generate metaplots of TPR1-chromatin association in TPR1-GFP Col-0 and TPR1-GFP Col-0 eds1 lines for gene sets of interest
 
 ## definition of TPR1-bound genes
 
