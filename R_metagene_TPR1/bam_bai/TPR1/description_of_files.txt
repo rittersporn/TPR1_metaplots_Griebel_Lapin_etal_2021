@@ -1,0 +1,9 @@
+"TPR1_Col_ChIP.bam" - file with the alignment data for TPR1 ChIP-seq on TPR1-GFP Col-0 line, three combined replicates (~0.9 Gb)
+"TPR1_Col_ChIP.bam.bai" - index file to support parsing of "TPR1_Col_ChIP.bam" (~0.3 Mb)
+"TPR1_Col_input.bam" - file with the alignment data for input in ChIP-seq on TPR1-GFP Col-0 line, three combined replicates (~1.1 Gb)
+"TPR1_Col_input.bam.bai" - index file to support parsing of "TPR1_Col_input.bam" (~0.3 Mb)
+"TPR1_eds1_ChIP.bam" - file with the alignment data for TPR1 ChIP-seq on TPR1-GFP Col-0 eds1-2 line, three combined replicates (~0.5 Gb)
+"TPR1_eds1_ChIP.bam.bai" - index file to support parsing of "TPR1_eds1_ChIP.bam" (~0.3 Mb)
+"TPR1_eds1_input.bam" - file with the alignment data for input in ChIP-seq on TPR1-GFP Col-0 eds1-2 line, three combined replicates (~0.8 Gb)
+"TPR1_eds1_input.bam.bai" - index file to support parsing of "TPR1_Col_input.bam" (~0.3 Mb)
+
