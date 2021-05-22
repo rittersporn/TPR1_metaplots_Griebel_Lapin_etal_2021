@@ -1,0 +1,12 @@
+The alignment files (BAM) and their index (bai) can be downloaded from the MPDL collection at https://edmond.mpdl.mpg.de/imeji/collection/U6N5zIOIWgjjMZCu.
+Please place the downloaded files to the folder ./R_metagene_TPR1/bam_bai/TPR1/
+
+The names of files should be:
+"TPR1_Col_ChIP.bam"
+"TPR1_Col_ChIP.bam.bai"
+"TPR1_Col_input.bam"
+"TPR1_Col_input.bam.bai"
+"TPR1_eds1_ChIP.bam"
+"TPR1_eds1_ChIP.bam.bai"
+"TPR1_eds1_input.bam"
+"TPR1_eds1_input.bam.bai"
