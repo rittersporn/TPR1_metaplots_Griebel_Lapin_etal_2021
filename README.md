@@ -81,12 +81,22 @@ At this step, coordinates of regions to plot for the genes of interest are saved
 
 9. Test run, step 2. Open the script "02_Drawing_metaplots_TPR1.R", select everything and run it.
 
-Here, BED files generated in step 1 provide coordinates of genomic regions (genes) to parse read count information stored in the downloaded BAM files. You will get a couple of warning messages "In normalizePath(path.expand(path), winslash, mustWork) : <...> The system cannot find the file specified". This is normal behaviour for 'metagene' (see 'metagene' manual). As a result, you should get six files in the directory ./metaplots : (1) "ChIP_TPR1_Col.pdf", (2) "input_TPR1_Col.pdf" and (3) "input_norm_TPR1_Col.pdf", (4) "ChIP_TPR1_eds1.pdf", (5) "input_TPR1_eds1.pdf" and (6) "input_norm_TPR1_eds1.pdf". They should be the same as in ./expected_metaplots with the exception that the line for TAIR_2000 gene set might look slightly different. This is because the TAIR_2000 set is generated again after each run of "01_Preparation_BED_files.R".
+Here, BED files generated in step 1 provide coordinates of genomic regions (genes) to parse read count information stored in the downloaded BAM files. You will get a couple of warning messages "In normalizePath(path.expand(path), winslash, mustWork) : <...> The system cannot find the file specified". This is normal behaviour for 'metagene' (see 'metagene' manual).
+
+You might also get a warning message that index (.bai) files are younger than the alignment files. This can be due to downloading files individually. Since the .bai files are smaller, they are downloaded quicker and therefore you get this warning. To avoid this, download the entire folder [https://edmond.mpdl.mpg.de/imeji/collection/s3y4lug6jwbTWeY6] at once, not individual files.
+
+As a result, you should get six files in the directory ./metaplots : (1) "ChIP_TPR1_Col.pdf", (2) "input_TPR1_Col.pdf" and (3) "input_norm_TPR1_Col.pdf", (4) "ChIP_TPR1_eds1.pdf", (5) "input_TPR1_eds1.pdf" and (6) "input_norm_TPR1_eds1.pdf". They should be the same as in ./expected_metaplots with the exception that the line for TAIR_2000 gene set might look slightly different. This is because the TAIR_2000 set is generated again after each run of "01_Preparation_BED_files.R".
 
 10. Once the test run looks good, you are good to prepare metaplots for your gene sets of interest. For that, create a TXT file with <2000 AGI codes and save it in ./gene_sets under informative name e.g. "my_GOI.txt" or other name. Please use file "TPR1_Col_bound_genes.txt" in ./gene_sets as an example (tab-delimited format). It is no problem to have gene model numbers (e.g. AT3G48090.2) or whitespaces before and after the gene code, as there is a clean-up step for the input. You can visualize multiple gene sets on one metaplot. For that place multiple TXT files in ./gene_sets - one gene set per a TXT tab-delimited file. Names of the files will be used to label curves on the resulting metaplot.
 
 11. Resulting metaplots are saved into the directory ./metaplots
 
+### tested package versions:
+metagene: 2.18.0, 2.22.0
+BiocGenerics: 0.32.0, 0.36.1
+stringr: 1.4.0
+knitr: 1.30, 1.33
+ggplot2: 3.3.2, 3.3.5
 
 ### Words of caution:
 #### 'metagene' vs. deepTools
