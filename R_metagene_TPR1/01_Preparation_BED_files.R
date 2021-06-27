@@ -67,3 +67,6 @@ for (i in 1:length(gene_sets)){
 bed_gene_set <- bed[sample(1:nrow(bed), size = 2000, replace = FALSE),]
 filename <- file.path(out_data, paste0("TAIR_2000", ".bed"))
 write.table(bed_gene_set, filename, sep="\t", row.names=FALSE, col.names = FALSE, quote=FALSE)
+
+# print info about used packages
+sessionInfo()
