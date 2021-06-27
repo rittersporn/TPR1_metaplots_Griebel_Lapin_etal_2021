@@ -3,7 +3,7 @@
 
 This repository contains R scripts to generate metaplots of TPR1-chromatin association in TPR1-GFP Col-0 (TPR1 Col) and TPR1-GFP Col-0 eds1 (TPR1 eds1) lines for gene sets of interest
 
-Associated repository of alignment and enrichment files
+An associated repository with the alignment and enrichment files
 https://edmond.mpdl.mpg.de/imeji/collection/U6N5zIOIWgjjMZCu
 
 ## definition of TPR1-bound genes
