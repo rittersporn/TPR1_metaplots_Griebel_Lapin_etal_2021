@@ -3,12 +3,13 @@
 # Target regions are 2kb upstream and downstream the TSS per gene --> we are plotting 4kb for all genes
 #--------------------------------------------------------------------------------------------------------
 
+
 #BiocManager::install("metagene")
-library("metagene")
-library("BiocGenerics")
-library("stringr")
-library("knitr")
-library("ggplot2")
+library("metagene") # tested versions 2.18.0 and 2.22.0
+library("BiocGenerics") # tested versions 0.32.0 and 0.36.1
+library("stringr") # tested version 1.4.0
+library("knitr") # tested version 1.30, 1.33
+library("ggplot2") # tested versions 3.3.2 and 3.3.5
 
 
 # Working and output directories
@@ -56,7 +57,7 @@ full_mark_name_and_location <- data.frame(mark_name = c("ChIP_TPR1_Col",
                                                            "TPR1_eds1_ChIP.bam$",
                                                            "TPR1_eds1_input.bam$"))
 
-complete_genotype_set <- c("Col", "eds1")
+complete_genotype_set <- c("TPR1_Col", "TPR1_eds1")
 #--------------------------------------------------------------------------------------------------------
 # generate metaplots
 #--------------------------------------------------------------------------------------------------------
@@ -91,16 +92,14 @@ for (genotype in complete_genotype_set){
     df$group <- as.factor(group_names)
     
     #plot the data
-    my_plot = plot_metagene(df)
-    my_plot +
-      labs(y = "Coverage, RPM", x = "", title = mark_name) +
+    my_plot = plot_metagene(df) + labs(y = "Coverage, RPM", x = "", title = mark_name) +
       coord_cartesian(ylim = c(0, 3)) +
       scale_x_continuous(breaks = c(1,50,100), labels = c("-2 kb","TSS","2 kb")) +
       theme(plot.title = element_text(size=14, face = "bold", hjust = 0.5),
             axis.title.x = element_text(color="blue", size=14, face="bold"),
-            axis.title.y = element_text(size=14)) +
-      ggsave(file.path(out_data, paste0(mark_name,".pdf")))
-    
+            axis.title.y = element_text(size=14))
+    ggsave(file.path(out_data, paste0(mark_name,".pdf")))
+    rm(my_plot)
     # save dataframes for making plots with basic normalization
     if(grepl("ChIP", mark_name)) df_ChIP <- df
     if(grepl("input", mark_name)) df_input <- df
@@ -114,8 +113,8 @@ for (genotype in complete_genotype_set){
   
   
   #plot the normalized data
-  g <- ggplot(data = df_norm, aes(x = bin, y = value, group = region, colour = region))
-  g + geom_line(size = 3) +
+  my_plot <- ggplot(data = df_norm, aes(x = bin, y = value, group = region, colour = region)) +
+    geom_line(size = 3) +
     labs(y = "Coverage, RPM, input normalized", x = "",
          title = paste0("Enrichment of TPR1-GFP at the gene sets in ", genotype)) +
     coord_cartesian(ylim = c(0, 3)) +
@@ -123,8 +122,10 @@ for (genotype in complete_genotype_set){
     theme_bw() + 
     theme(plot.title = element_text(size=14, face = "bold", hjust = 0.5),
           axis.title.x = element_text(color="blue", size=14, face="bold"),
-          axis.title.y = element_text(size=14)) +
-    ggsave(file.path(out_data, paste0(genotype, "_input_norm.pdf")))
+          axis.title.y = element_text(size=14))
+  ggsave(file.path(out_data, paste0(genotype, "_input_norm.pdf")))
+  rm(my_plot)
 }
 
-
+# print info about used packages
+sessionInfo()
