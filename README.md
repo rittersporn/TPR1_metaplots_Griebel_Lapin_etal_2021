@@ -1,35 +1,33 @@
 # Griebel, Lapin et al bioRxiv 2021, doi
-# Title
+# Arabidopsis Topless-related 1 transcriptional corepressor mitigates physiological damage and growth penalties of induced immunity
 
-This repository contains R scripts that allow to generate metaplots of TPR1-chromatin association in TPR1-GFP Col-0 and TPR1-GFP Col-0 eds1 lines for gene sets of interest
+This repository contains R scripts to generate metaplots of TPR1-chromatin association in TPR1-GFP Col-0 (TPR1 Col) and TPR1-GFP Col-0 eds1 (TPR1 eds1) lines for gene sets of interest
 
 Associated repository of alignment and enrichment files
 https://edmond.mpdl.mpg.de/imeji/collection/U6N5zIOIWgjjMZCu
 
 ## definition of TPR1-bound genes
 
-Scripts, input and expected output files are in the subdirectory "TPR1_bound_genes".
+The scripts, input and expected output files are in the subdirectory "TPR1_bound_genes".
 
-TPR1 bound genes in Col-0 and Col-0 eds1-2 backgrounds were selected from the peak annotation files (Table S5 and S7 from Griebel, Lapin et al 2021) using R script "TPR1_bound_genes_selection.R". In brief, unique AGI codes were taken from the column "Annotation" and "Nearest promoterID" and they together define "TPR1 bound genes".
+TPR1 bound genes in TPR1 Col and TPR1 eds1 were selected from the peak annotation files (Table S5 and S7 from Griebel, Lapin et al 2021) using the R script "TPR1_bound_genes_selection.R". In brief, unique AGI codes were taken from the column "Annotation" and "Nearest promoterID" and they together define "TPR1 bound genes".
 
-expected output - lists of genes bound by TPR1-GFP in Col-0 and Col-0 eds1-2 ("TPR1_Col_bound_genes.txt" and "TPR1_eds1_bound_genes.txt", respectively)
-
-scripts, input and output are in the subdirectory ./TPR1_bound_genes of this repository
+expected output - lists of genes bound by TPR1-GFP in TPR1 Col and TPR1 eds1 ("TPR1_Col_bound_genes.txt" and "TPR1_eds1_bound_genes.txt", respectively)
 
 
 ## preparation of metaplots for gene sets of interest
 
 ### introduction
 
-We prepared two R scripts to help the research community to access TPR1 ChIP-seq data without a need to process raw reads. Metaplots reveal general patterns in the distribution of chromatin features at genes of interest.
+Metaplots reveal general patterns in the distribution of chromatin features at genes of interest. We prepared two R scripts to help the research community to access TPR1 ChIP-seq data without a need to process raw reads. These scripts are in the subdirectory ".R_metagene_TPR1".
 
 In its heart, the functionality presented here has the R package 'metagene' [https://www.bioconductor.org/packages/release/bioc/vignettes/metagene/inst/doc/metagene.html]. Although the package does not produce plots like deepTools does, it offers a simple and accessible way to look into a range of ChIP-seq data in a matter of minutes using a regular personal computer. If your gene set of interest turns out to be enriched for binding events by certain TFs or for histone marks as seen on the metaplots generated with 'metagene', one could follow this up in more details (e.g. using deepTools [https://github.com/deeptools/deepTools/blob/develop/docs/index.rst]).
 
 ### how to use (short version, after the 1st use)
 
-Inside of the directory R_metagene_TPR1
+Inside of the directory "R_metagene_TPR1"
 
-1. Save a list of genes of interest in a TXT tab-delimited file in the directory ./gene_sets . Use the file "TPR1_Col_bound_genes.txt" as a template. You can save multiple files - one per gene set. Names of the files will correspond to lines on the metaplots (e.g. "set1.txt" -> "set1" on the graph)
+1. Save a list of genes of interest in a TXT tab-delimited file in the directory ./gene_sets . Use the file "TPR1_Col_bound_genes.txt" as a template. You can save multiple files - one file per gene set. Names of the files will correspond to lines on the metaplots (e.g. "set1.txt" -> "set1" on the graph)
 
 2. Run "01_Preparation_BED_files.R"
 
@@ -51,19 +49,19 @@ The actual alignment files (.bam) can be found in the same Edmond collection.
 
 On the plot "input_norm.pdf" the confidence intervals are absent since the lines are obtained by subtracting mean RPM values for input from mean RPM for TPR1-GFP  ChIP values for each gene set.
 
-### how to use (long version, for the first time use)
+### how to use (long version, the first-time use)
 
 1. Download this repository (green button "Clone or download")
 
 2. Navigate to the directory "R_metagene_TPR1"
 
-3. Open RStudio with R version >=3.6. RStudio is preferred for the correct work of scripts since setting of the working directory is made with RStudio API 'rstudioapi::getActiveDocumentContext()'
+3. Open RStudio with R version >=3.6. RStudio is preferred for the correct work of scripts since setting up of the working directory is made with RStudio API 'rstudioapi::getActiveDocumentContext()'
 
 4. Install the package 'metagene' from Bioconductor (BiocManager::install("metagene")) and its dependencies
 
 5. Install other required libraries: 'BiocGenerics' (BiocManager::install("BiocGenerics")), 'stringr', 'knitr' and 'ggplot2'
 
-6. Download files with alignments and their indexes
+6. Download files with alignments (.bam) and their indexes (.bai)
 
 "TPR1_Col_ChIP.bam", "TPR1_Col_ChIP.bam.bai",
 
